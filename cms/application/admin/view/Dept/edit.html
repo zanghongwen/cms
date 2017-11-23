@@ -1,0 +1,88 @@
+{include file="public:header" /}
+<div class="main-wrap">
+	<div class="crumb-wrap">
+		<div class="crumb-list">
+            <i class="icon-font"></i>
+            <a href="{:url('Index/index')}">首页</a>
+            <span class="crumb-step">&gt;</span>
+            <a class="crumb-name" href="{:url('Dept/index')}">部门信息</a>
+            <span class="crumb-step">&gt;</span><span>修改部门</span>
+		</div>
+		
+	</div>
+	<div class="result-wrap">
+		<div class="result-content">
+			<form action="{:url('Dept/edit')}" method="post" id="myform" name="myform" enctype="multipart/form-data">
+			                <input type="hidden" name="id" value="{$result.id}" />
+				<table class="insert-tab" width="100%" border="1">
+					<tbody>
+                        <tr>
+                            <th  style=" width:100px;">部门名称：</th>
+                            <td>
+                                <input class="common-text" id="name" name="name"  type="text" value="{$result.name}" maxlength="15">
+                            </td>
+                        </tr>   
+                        <tr>
+                            <th>部门编码：</th>
+                            <td>
+                                <input class="common-text" id="code" name="code"  type="number" value="{$result.code}" min="1" max="999999">
+                            </td>
+                        </tr>  
+                        <tr>
+                            <th>部门电话：</th>
+                            <td>
+                                <input class="common-text" id="phone" name="phone"  type="number" min="1" value="{$result.phone}" max="99999999999">
+                            </td>
+                        </tr>    
+                        <tr>
+                            <th>部门地址：</th>
+                            <td><input class="common-text" id="address" name="address" value="{$result.address}" type="text"> </td>
+                        </tr>   
+                        <tr>
+                            <th></th>
+                            <td>
+                                <input class="btn btn-primary  mr10"  value="保存后自动关闭" name="dosubmit"  type="submit" onclick="checkInfo();return false;">
+                                
+                                <input class="btn btn-primary  mr10"  value="保存并继续增加" name="dosubmit_continue" type="submit" onclick="checkInfo();return false;">
+                                <input class="btn" onclick="history.go(-1)" value="返回" type="button">
+                            </td>
+                        </tr>
+					</tbody>
+				</table>
+
+			</form>
+	
+		</div>
+		
+	</div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+function checkInfo(){
+    var name = document.getElementById('name').value;
+    // alert(name);
+    if (name=="") {
+        alert("请输入部门名称");
+        return;
+    }
+    var code = document.getElementById('code').value;
+    if (code=="") {
+        alert("请输入部门编码");
+        return;
+    }
+    document.form.submit()
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+

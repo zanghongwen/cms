@@ -1,0 +1,89 @@
+{include file="public:header" /}
+<div class="main-wrap">
+	<div class="crumb-wrap">
+		<div class="crumb-list"><i class="icon-font"></i><a href="{:url('Index/index')}">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">订单管理</span>
+			
+		</div>
+		
+	</div>
+	 <div class="search-wrap">
+            <div class="search-content">
+                <form action="{:url('Order/index')}" method="get">
+                    <table class="search-tab">
+                        <tr>
+                            <th width="100">订单名称:</th>
+                            <td>
+                            	<input class="common-text" placeholder="订单名称" name="name" value="{$name?$name:''}"  type="text">
+
+                            </td>
+                            <th width="100">订单编号:</th>
+                            <td><input class="common-text" placeholder="订单编号" name="code" value="{$code?$code:''}"  type="text"></td>
+                            <th width="100">订单日期:</th>
+                            <td><input class="common-text" placeholder="订单日期" id="date" name="date" value="{$date?$date:''}"  type="text">
+                            <script type="text/javascript">$("#date").datetimepicker();</script>
+                            </td>
+                            
+                            <td><input class="btn btn-primary btn2" value="查询" type="submit"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+	<div class="result-wrap">
+		<form name="myform" id="myform" method="post">
+			<div class="result-title">
+				<div class="result-list">
+					<a href="{:url('Order/add')}"><i class="icon-font"></i>增加订单</a>
+                    <a onclick="myform.action='{:url('Order/delete')}';myform.submit();" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
+				</div>
+			</div>
+	<div class="result-content">
+		<table class="result-tab" width="100%">
+			<tr>
+				<th class="tc" width="20"><input class="allChoose" type="checkbox" id="check_box" onclick="selectall('id[]');"></th>
+				<th>订单名称</th>
+				<th>订单编号</th>
+				<th>订单日期</th>
+				<th>负责人</th>
+				<th>创建日期</th>
+				<th>创建用户</th>
+				<th width="60">操作</th>
+			</tr>
+            {volist name='orderList' id='vo'}
+            <tr align="center">
+                <td class="tc"><input name="id[]" value="{$vo.id}" type="checkbox"></td>
+                <td align="left">{$vo.name}</td>
+                <td>{$vo.code}</td>
+                <td>{$vo.date}</td>
+                <td>{$vo.responser}</td>
+                <td>{$vo.create_time}</td>
+                <td>{$vo.create_id}</td>
+                <td>
+                    <a href="{:url('Order/toEdit',['id'=>$vo['id']])}">修改</a>
+                    <a onclick="javascript:return del();"  href="{:url('Order/delete',['id'=>$vo['id']])}" >删除</a>
+                </td>
+               
+            </tr>
+            {/volist}
+ <tr><td colspan="13">{$page}</td></tr>
+			
+		</table>
+		
+	</div>
+
+		</form>
+		
+	</div>
+</div>
+
+ <script type="text/javascript">
+	function del() {
+		var msg = "您真的确定要删除吗？\n\n请确认！";
+		if (confirm(msg)==true){
+			return true;
+		}else{
+			return false;
+		}
+		
+	}
+ </script>

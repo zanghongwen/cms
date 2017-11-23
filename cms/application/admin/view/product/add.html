@@ -1,0 +1,91 @@
+{include file="public:header" /}
+<div class="main-wrap">
+	<div class="crumb-wrap">
+		<div class="crumb-list">
+            <i class="icon-font"></i>
+            <a href="{:url('Index/index')}">首页</a>
+            <span class="crumb-step">&gt;</span>
+            <a class="crumb-name" href="{:url('Product/index')}">产品信息</a>
+            <span class="crumb-step">&gt;</span><span>添加产品</span>
+		</div>
+		
+	</div>
+	<div class="result-wrap">
+		<div class="result-content">
+			<form action="{:url('Product/add')}" method="post" id="myform" name="myform" enctype="multipart/form-data">
+				<table class="insert-tab" width="100%" border="1">
+					<tbody>
+                        <tr>
+                            <th  style=" width:100px;">产品名：</th>
+                            <td>
+                                <input class="common-text" id="name" name="name"  type="text" maxlength="15">
+                            </td>
+                        </tr>   
+                        <tr>
+                            <th>产品编号：</th>
+                            <td>
+                                <input class="common-text" id="model" name="model"  type="number" min="1" max="999999">
+                            </td>
+                        </tr>  
+                        <tr>
+                            <th>生产日期：</th>
+                            <td>
+                                <input class="common-text" id="date" name="date"  type="number" min="1" max="999999999">
+                            </td>
+                        </tr>    
+                        <tr>
+                            <th>产地：</th>
+                            <td>
+                            <input class="common-text" id="made" name="made"  type="text" min="1" max="100">
+                            </td>
+                        </tr>   
+                        <tr>
+                            <th></th>
+                            <td>
+                                <input class="btn btn-primary  mr10"  value="保存后自动关闭" name="dosubmit"  type="submit" onclick="checkInfo();return false;">
+                                
+                                <input class="btn btn-primary  mr10"  value="保存并继续增加" name="dosubmit_continue" type="submit" onclick="checkInfo();return false;">
+                                <input class="btn" onclick="history.go(-1)" value="返回" type="button">
+                            </td>
+                        </tr>
+					</tbody>
+				</table>
+
+			</form>
+	
+		</div>
+		
+	</div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    function checkInfo(){
+        var name = document.getElementById('name').value;
+        // alert(name);
+        if (name=="") {
+            alert("请输入产品名");
+            return;
+        }
+        var model = document.getElementById('model').value;
+        if (model=="") {
+            alert("请输入产品编号");
+            return;
+        }
+        
+        
+        document.form.submit();
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+

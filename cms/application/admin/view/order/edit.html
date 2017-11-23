@@ -1,0 +1,93 @@
+{include file="public:header" /}
+<div class="main-wrap">
+	<div class="crumb-wrap">
+		<div class="crumb-list">
+            <i class="icon-font"></i>
+            <a href="{:url('Index/index')}">首页</a>
+            <span class="crumb-step">&gt;</span>
+            <a class="crumb-name" href="{:url('Order/index')}">订单信息</a>
+            <span class="crumb-step">&gt;</span><span>修改订单</span>
+		</div>
+		
+	</div>
+	<div class="result-wrap">
+		<div class="result-content">
+			<form action="{:url('Order/saveEdit')}" method="post" id="myform" name="myform" enctype="multipart/form-data">
+			    <input type="hidden" name="id" value="{$result.id}" />
+				<table class="insert-tab" width="100%" border="1">
+					<tbody>
+                        <tr>
+                            <th  style=" width:100px;">订单名称：</th>
+                            <td>
+                                <input class="common-text" id="name" name="name" value="{$result.name}" type="text" maxlength="15">
+                            </td>
+                        </tr>   
+                        <tr>
+                            <th>订单编号：</th>
+                            <td>
+                                <input class="common-text" id="code" name="code"  value="{$result.code}" type="number" min="1" max="999999">
+                            </td>
+                        </tr>  
+                        <tr>
+                            <th>订单日期：</th>
+                            <td>
+                                <input class="common-text" readonly="readonly" id="date" name="date"  value="{$result.date}" type="text" >
+                                <script type="text/javascript">$("#date").datetimepicker();</script>
+                            </td>
+                        </tr>    
+                        <tr>
+                            <th>负责人：</th>
+                            <td>
+                            <input class="common-text" id="responser" name="responser"  value="{$result.responser}" type="text" min="1" max="100">
+                            </td>
+                        </tr>   
+                        <tr>
+                            <th></th>
+                            <td>
+                                <input class="btn btn-primary  mr10"  value="保存后自动关闭" name="dosubmit"  type="submit" onclick="checkInfo();return false;">
+                                
+                                <input class="btn btn-primary  mr10"  value="保存并继续增加" name="dosubmit_continue" type="submit" onclick="checkInfo();return false;">
+                                <input class="btn" onclick="history.go(-1)" value="返回" type="button">
+                            </td>
+                        </tr>
+					</tbody>
+				</table>
+
+			</form>
+	
+		</div>
+		
+	</div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    function checkInfo(){
+        var name = document.getElementById('name').value;
+        // alert(name);
+        if (name=="") {
+            alert("请输入订单名称");
+            return;
+        }
+        var model = document.getElementById('code').value;
+        if (code=="") {
+            alert("请输入订单编号");
+            return;
+        }
+        
+        
+        document.form.submit();
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+

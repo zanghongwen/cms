@@ -1,0 +1,74 @@
+{include file="public:header" /}
+<div class="main-wrap">
+	<div class="crumb-wrap">
+		<div class="crumb-list">
+			<i class="icon-font"></i><a href="{:url('Index/index')}">首页</a><span
+				class="crumb-step">&gt;</span><span class="crumb-name">部门管理</span>
+
+		</div>
+
+	</div>
+
+	<div class="result-wrap">
+		<form name="myform" id="myform" method="post">
+			<div class="result-title">
+				<div class="result-list">
+					<a href="{:url('Dept/add')}"><i class="icon-font"></i>增加部门</a>
+					<a
+						onclick="myform.action='{:url('Dept/delete')}';myform.submit();"
+						href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
+				</div>
+			</div>
+			<div class="result-content">
+				<table class="result-tab" width="100%">
+					<tr>
+						<th class="tc" width="20"><input class="allChoose"
+							type="checkbox" id="check_box" onclick="selectall('id[]');"></th>
+						<th>部门名称</th>
+						<th>部门编码</th>
+						<th>部门电话</th>
+						<th>部门地址</th>
+						<th>创建时间</th>
+						<th>创建用户</th>
+						<th>修改时间</th>
+						<th>修改用户</th>
+						<th width="60">操作</th>
+					</tr>
+					{volist name='deptList' id='vo'}
+					<tr align="center">
+						<td class="tc"><input name="id[]" value="{$vo.id}"
+							type="checkbox"></td>
+						<td align="left">{$vo.name}</td>
+						<td align="left">{$vo.code}</td>
+						<td>{$vo.phone}</td>
+						<td>{$vo.address}</td>
+						<td>{$vo.create_date}</td>
+						<td>{$vo.create_id}</td>
+						<td>{$vo.update_date}</td>
+						<td>{$vo.update_id}</td>
+				<td>
+                    <a class="" href="{:url('Dept/edit',['id'=>$vo['id']])}">修改</a>
+                    <a onclick="javascript:return del();" class="" href="{:url('Dept/delete',['id'=>$vo['id']])}" >删除</a>
+                </td>
+					</tr>
+					{/volist}
+				</table>
+
+			</div>
+
+		</form>
+
+	</div>
+</div>
+
+<script type="text/javascript">
+	function del() {
+		var msg = "您真的确定要删除吗？\n\n请确认！";
+		if (confirm(msg) == true) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+</script>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<title>{$seo['title']}</title>
+<meta name="keywords" content="{$seo['keywords']}">
+<meta name="description" content="{$seo['description']}">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/default/css/base.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/default/css/wtt201311.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wap/default/css/page.css" />
+</head>
+<body>
+<!-- 内容 -->
+<div id="content">
+  <div class="wrapper">
+    <div class="box-left">
+        {include file="header" /}
+      <div class="box-header"><span>{$category.catname}</span> </div>
+      <div id="post_container">
+      
+      {volist name='list' id='vo'}
+      <div class="box-list wx-text-thumb ">
+        <div class="wx-text">
+          <h3><a href="{:url('Article/show',['id'=>$vo['id']])}"  class="open" title="{$vo.title}"  target="_blank">{$vo.title}</a></h3>
+          <p class="wx-intro">	{$vo.description}...</p>
+          <div class="wx-info"><span class="wx-source">发表于{$vo.inputtime}</span>
+            <span class="wx-read">{$vo.hits}人看过</span></div>
+        </div>
+        <div class="wx-thumb"><a href="{:url('Article/show',['id'=>$vo['id']])}" class="open" target="block"><img src="{$vo.thumb}" title="{$vo.title}"  /></a></div>
+        <div class="clearfix"></div>
+      </div>
+     {/volist}
+      {if condition="count($list) eq 5"}
+      <a class="more" style=" display:block;text-align:center;" href="javascript:;">显示更多</a>
+      {/if}
+      
+      </div>
+    
+    </div>
+      {include file="right" /}
+      {include file="footer" /}
+</body>
+</html>
+<script>
+
+    var nStart = 5; 
+    $('.more').click(function() {
+        var _this = $(this);
+        if(nStart >= {$total}) {
+            alert('后面没有数据了！');
+            _this.text('后面没有数据了');
+            return false;
+        } else {
+            $.post("{:url('category/ajax')}", {start: nStart}, function(res) {
+                $.each(res['result'], function(i, item) {
+					var title= item.title;
+					var id=item.id;
+					var hits= item.hits;
+					var thumb= item.thumb;
+					var description= item.description;
+					var inputtime=item.inputtime;
+					var url = "{:url('Article/show')}";
+                    url += '?id='+id;
+                    _this.before('<div class="box-list wx-text-thumb">\
+					<div class="wx-text">\
+					<h3><a href="'+url+'"  class="open" title="'+title+'"  target="_blank">'+title+'</a></h3>\
+					<p class="wx-intro">'+description+'...</p>\
+					<div class="wx-info"><span class="wx-source">发表于'+inputtime+'</span><span class="wx-read">'+hits+'人看过</span></div>\
+					</div>\
+                    <div class="wx-thumb"><a href="'+url+'" class="open" target="block"><img src="'+thumb+'" title="'+title+'"  /></a></div>\
+					<div class="clearfix"></div>\
+                </div>');
+                });
+            });
+            nStart += 5;
+        }
+    });
+</script>
