@@ -35,10 +35,14 @@ class Order extends Common{
 		}
 		
 		// get date from order index page
-		$date = input('date');
-		if($date) {
-			var_dump(123123);
-			$map['date'] = trim($date);
+		$dateFrom = input('dateFrom');
+		if($dateFrom) {
+			$map['date'] = ['>=', strip_tags(trim($dateFrom))];
+		}
+		
+		$dateTo = input('dateTo');
+		if($dateTo) {
+			$map['date'] = ['<=', strip_tags(trim($dateTo))];
 		}
 		
 		// set map to 1 if map is null
@@ -47,7 +51,7 @@ class Order extends Common{
         }
         
         // search order from DB, order by ID asc, paginate by five.
-		$list = db('order')->where($map)->order('id asc')->paginate(5);
+		$list = db('order')->where($map)->order('date asc')->paginate(8);
 		
 		// render page object
         $page = $list->render();
@@ -57,7 +61,8 @@ class Order extends Common{
         $this->assign('page', $page);
         $this->assign('name',$name);
         $this->assign('code',$code);
-        $this->assign('date',$date);
+        $this->assign('dateFrom',$dateFrom);
+        $this->assign('dateTo',$dateTo);
 		return $this->fetch();
 	}
 	

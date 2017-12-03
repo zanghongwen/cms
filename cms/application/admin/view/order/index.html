@@ -18,9 +18,12 @@
                             </td>
                             <th width="100">订单编号:</th>
                             <td><input class="common-text" placeholder="订单编号" name="code" value="{$code?$code:''}"  type="text"></td>
-                            <th width="100">订单日期:</th>
-                            <td><input class="common-text" placeholder="订单日期" id="date" name="date" value="{$date?$date:''}"  type="text">
-                            <script type="text/javascript">$("#date").datetimepicker();</script>
+                            <th width="100">订单日期开始:</th>
+                            <td><input class="common-text" placeholder="订单日期开始" id="dateFrom" name="dateFrom" value="{$dateFrom?$dateFrom:''}"  type="text">
+                            <th width="100">订单日期结束:</th>
+                            <td><input class="common-text" placeholder="订单日期结束" id="dateTo" name="dateTo" value="{$dateTo?$dateTo:''}"  type="text">
+                            <script type="text/javascript">$("#dateFrom").datetimepicker();</script>
+                            <script type="text/javascript">$("#dateTo").datetimepicker();</script>
                             </td>
                             
                             <td><input class="btn btn-primary btn2" value="查询" type="submit"></td>

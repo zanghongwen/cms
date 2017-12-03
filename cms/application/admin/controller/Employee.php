@@ -24,10 +24,9 @@ class Employee extends Common {
         if($gender != "") {
             $map['gender'] = trim($gender);
         }
-
-        if(!isset($map)){
-            $map = 1;
-        }
+        
+        $map['deleted'] = '0';
+        
     	$list = db('employee')->where($map)->order('id desc')->paginate(10);
         $page = $list->render();
         $this->assign('name', $name);
@@ -71,14 +70,21 @@ class Employee extends Common {
         }
         if (is_array($data['id'])) {
             foreach ($data['id'] as $v){
-                db('employee')->delete($v);
+//                db('employee')->delete($v);
+                $data['id'] = $v;
+                $data['deleted'] = '1';
+                db('employee')->update($data);
+
             }
         } else {
             $id = intval($data['id']);
             if (!$id) {
                 $this->error('非法参数');
             }
-            db('employee')->delete($id);
+            $data['id'] = $id;
+            $data['deleted'] = '1';
+            db('employee')->update($data);
+
         }
         $this->success('删除成功');
 
