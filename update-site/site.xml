@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description name="ZeroTurnaround Update Site" url="http://update.zeroturnaround.com/update-site">
+      Official ZeroTurnaround update site.
+   </description>
+   
+   <feature url="features/org.zeroturnaround.eclipse.feature_7.0.2.RELEASE.jar" id="org.zeroturnaround.eclipse.feature" version="7.0.2.RELEASE">
+      <category name="JRebel"/>
+   </feature>
+   <feature url="features/org.zeroturnaround.eclipse.wtp.feature_7.0.2.RELEASE.jar" id="org.zeroturnaround.eclipse.wtp.feature" version="7.0.2.RELEASE">
+      <category name="JRebel"/>
+   </feature>
+
+   <feature url="features/org.zeroturnaround.eclipse.feature_7.0.2.RELEASE.jar" id="org.zeroturnaround.eclipse.feature" version="7.0.2.RELEASE">
+      <category name="JRebel MyEclipse"/>
+   </feature>
+   <feature url="features/org.zeroturnaround.myeclipse.feature_7.0.2.RELEASE.jar" id="org.zeroturnaround.myeclipse.feature" version="7.0.2.RELEASE">
+      <category name="JRebel MyEclipse"/>
+   </feature>
+   
+   <feature url="features/org.zeroturnaround.eclipse.wtp.feature_7.0.2.RELEASE.jar" id="org.zeroturnaround.eclipse.wtp.feature" version="7.0.2.RELEASE">
+      <category name="JRebel MyEclipse 2015"/>
+   </feature>
+   <feature url="features/org.zeroturnaround.eclipse.feature_7.0.2.RELEASE.jar" id="org.zeroturnaround.eclipse.feature" version="7.0.2.RELEASE">
+      <category name="JRebel MyEclipse 2015"/>
+   </feature>
+   
+   <category-def name="JRebel" label="JRebel for Eclipse (3.6+) and derivates"/>
+   <category-def name="JRebel MyEclipse" label="JRebel for MyEclipse (9.1 through 2014)"/>
+   <category-def name="JRebel MyEclipse 2015" label="JRebel for MyEclipse (2015 and later)"/>
+</site>

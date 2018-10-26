@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JRebel for Eclipse Update Site</title>
+		<style type="text/css">
+			body {
+				font-family: Verdana, sans-serif;
+			}
+			img {
+				border: none;
+			}
+			.download-link {
+				border: 2px solid #753CBC;
+				background-color: #F4F4F4;
+				color: #753CBC;
+				text-align: center;
+				font-weight: bold;
+				font-size: 1em;
+				letter-spacing: 0.1em;
+
+				width: 47em;
+				padding: 1em;
+				margin-left: 2%;
+				display: block;
+			}
+			.marketplace-button img {
+				display: inline-block;
+				padding: 0.5em 1em;
+			}
+			.zip-update-site {
+				font-size: 0.8em;
+			}
+			#clippy {
+				position: absolute;
+				left: 50em;
+				margin-left: 2%;
+				margin-top: -3.5em;
+			}
+		</style>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+		<script type="text/javascript">
+			var params = {quality:"high", AllowScriptAccess:"always", bgcolor:"#ffffff", wmode:"transparent", text:window.location.href};
+	    	swfobject.embedSWF("clippy.swf", "clippy", "110", "22", "9","", params);
+	    </script>
+	</head>
+	<body>
+<div class="content">
+<h2>JRebel for Eclipse version 7.0.2.RELEASE</h2>
+
+<p>This URL contains the Eclipse update site of <strong>JRebel for Eclipse</strong> (version 7.0.2.RELEASE).</p>
+
+<p>JRebel for Eclipse supports Eclipse 3.6 or newer. The latest released version of <a href="http://www.eclipse.org/downloads/">Eclipse IDE for Java EE Developers</a> is recommended.</p>
+
+<h3>Marketplace Install (latest release only)</h3>
+<p>To install the <strong>latest release version</strong> of JRebel via the Eclipse Marketplace Client, drag the button below into your Eclipse</p>
+
+<p>
+	<a class="marketplace-button" href='http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=29591' title='Drag and drop into a running Eclipse Indigo workspace to install JRebel for Eclipse'>
+		<img src='http://marketplace.eclipse.org/misc/installbutton.png'/>
+	</a>
+</p>
+
+<h3>Alternative Install (this version: 7.0.2.RELEASE)</h3>
+<p>Alternatively, open Eclipse, go to <strong>Help > Install New Software</strong>, and paste this URL into the dialog box. Follow the on-screen instructions from there.</p>
+<p><strong>NB!</strong> It is recommended to uncheck the "Contact all update sites" box for faster installs.</p>
+
+<div class="download-section">
+	<p>
+		<input type="url" readonly="true" class="download-link" id="download-link" onclick="try{this.setSelectionRange(0, this.value.length)}catch(e){}" value="http://update.zeroturnaround.com/update-site/">
+		<script type="text/javascript">
+		  document.getElementById('download-link').value = window.location.href
+		</script>
+	</p>
+	<div id="clippy">&nbsp;</div>
+	<p class="zip-update-site">
+		(If you cannot use the online update site, a downloadable zipped update site is available: <a href='update-site.zip'>update-site.zip</a>)
+	</p>
+</div>
+</div>
+
+<h3>Other Versions</h3>
+<p>The latest release is always at <a href="http://update.zeroturnaround.com/update-site/">http://update.zeroturnaround.com/update-site/</a>.</p>
+<p>To install an older version, go to <a href="http://update.zeroturnaround.com/update-site-archive/">http://update.zeroturnaround.com/update-site-archive/</a> and select your desired version.</p>
+<p>Nightly builds are available from <a href="http://update.zeroturnaround.com/update-site-nightly/">http://update.zeroturnaround.com/update-site-nightly/</a>.</p>
+
+	</body>
+</html>
