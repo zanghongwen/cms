@@ -30,7 +30,57 @@
 
 
                             </td>
-                            <td><input class="btn btn-primary btn2" value="查询" type="submit"></td>
+                            <th width="70">部门:</th>
+                            <td>
+								<select name="department">
+                                    <option value="">请选择</option>
+                                    <option {if condition="$department eq '0'"}selected="selected"{/if} value="0">销售部</option>
+                                    <option {if condition="$department eq '1'"}selected="selected"{/if} value="1">人事部</option>
+                                </select>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                        <th width="70">状态:</th>
+                            <td>
+								<select name="status">
+                                    <option value="">请选择</option>
+                                    <option {if condition="$status eq '0'"}selected="selected"{/if} value="0">在职</option>
+                                    <option {if condition="$status eq '1'"}selected="selected"{/if} value="1">离职</option>
+                                    <option {if condition="$status eq '2'"}selected="selected"{/if} value="2">退休</option>
+                                </select>
+                                
+                            </td>
+                            <th width="70">学历:</th>
+                            <td>
+								<select name="degree">
+                                    <option value="">请选择</option>
+                                    <option {if condition="$degree eq '专科'"}selected="selected"{/if} value="专科">专科</option>
+                                    <option {if condition="$degree eq '本科'"}selected="selected"{/if} value="本科">本科</option>
+                                </select>
+                                
+                            </td>
+                            <th width="70">籍贯:</th>
+                            <td>
+								<select name="hometown">
+                                    <option value="">请选择</option>
+                                    <option {if condition="$hometown eq '上海'"}selected="selected"{/if} value="上海">上海</option>
+                                    <option {if condition="$hometown eq '北京'"}selected="selected"{/if} value="北京">北京</option>
+                                    <option {if condition="$hometown eq '广州'"}selected="selected"{/if} value="广州">广州</option>
+                                </select>
+                                
+                            </td>
+                            <th width="70">职位:</th>
+                            <td>
+								<select name="position">
+                                    <option value="">请选择</option> 
+                                    <option {if condition="$position eq '0'"}selected="selected"{/if} value="0">销售经理</option>
+                                    <option {if condition="$position eq '1'"}selected="selected"{/if} value="1">人事经理</option>
+                                </select>
+                                
+                            </td>
+                             <td><input class="btn btn-primary btn2" value="查询" type="submit"></td>
+                        
                         </tr>
                     </table>
                 </form>

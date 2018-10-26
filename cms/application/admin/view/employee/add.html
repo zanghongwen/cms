@@ -2,130 +2,141 @@
 <div class="main-wrap">
 	<div class="crumb-wrap">
 		<div class="crumb-list">
-            <i class="icon-font"></i>
-            <a href="{:url('Index/index')}">首页</a>
-            <span class="crumb-step">&gt;</span>
-            <a class="crumb-name" href="{:url('Employee/index')}">员工信息</a>
-            <span class="crumb-step">&gt;</span><span>添加员工</span>
+			<i class="icon-font"></i> <a href="{:url('Index/index')}">首页</a> <span
+				class="crumb-step">&gt;</span> <a class="crumb-name"
+				href="{:url('Employee/index')}">员工信息</a> <span class="crumb-step">&gt;</span><span>添加员工</span>
 		</div>
-		
+
 	</div>
 	<div class="result-wrap">
 		<div class="result-content">
-			<form action="{:url('Employee/add')}" method="post" id="myform" name="myform" enctype="multipart/form-data">
+			<form action="{:url('Employee/add')}" method="post" id="myform"
+				name="myform" enctype="multipart/form-data">
 				<table class="insert-tab" width="100%" border="1">
 					<tbody>
-                        <tr>
-                            <th  style=" width:100px;">姓名：</th>
-                            <td>
-                                <input class="common-text" id="name" name="name"  type="text" maxlength="15">
-                            </td>
-                        </tr>   
-                        <tr>
-                            <th>工号：</th>
-                            <td>
-                                <input class="common-text" id="number" name="number"  type="number" min="1" max="999999">
-                            </td>
-                        </tr>  
-                        <tr>
-                            <th>年龄：</th>
-                            <td>
-                                <input class="common-text" id="age" name="age"  type="number" min="1" max="100">
-                            </td>
-                        </tr>    
-                        <tr>
-                            <th>性别：</th>
-                            <td><input type="radio" name="gender" value="0"> 男 
-                                <input type="radio" name="gender" value="1"> 女 </td>
-                        </tr>   
-                        <tr>
-                            <th>状态：</th>
-                            <td>  
-                                <select name="status">
-                                    <option value="0">在职</option>
-                                    <option value="1">离职</option>
-                                    <option value="2">退休</option>
-                                </select>
-                            </td>
-                        </tr>  
-                        <tr>
-                            <th>学历：</th>
-                            <td>
-                                <select name="degree">
-                                    <option value="专科">专科</option>
-                                    <option value="本科">本科</option>
-                                    <option value="硕士">硕士</option>
-                                </select>
-                            </td>
-                        </tr> 
-                        <tr>
-                            <th>籍贯：</th>
-                            <td>
-                                <select name="hometown">
-                                    <option value="北京">北京</option>
-                                    <option value="上海">上海</option>
-                                    <option value="广州">广州</option>
-                                </select>
-                            </td>
-                        </tr> 
-                        <tr>
-                            <th>职位：</th>
-                            <td>
-                                <input class="common-text" id="position" name="position"  type="text" >
-                            </td>
-                        </tr> 
-                        <tr>
-                            <th>部门：</th>
-                            <td>
-                                <select name="department">
-	                                {volist name='deptlist' id='vo'}
-	                                    <option value="{$vo.id}">{$vo.name}</option>
-	                                {/volist}
-                                </select>
-                              
-                             </td>
-                            
-                        </tr>  
-                        <tr>
-                            <th></th>
-                            <td>
-                                <input class="btn btn-primary  mr10"  value="保存后自动关闭" name="dosubmit"  type="submit" onclick="checkInfo();return false;">
-                                
-                                <input class="btn btn-primary  mr10"  value="保存并继续增加" name="dosubmit_continue" type="submit" onclick="checkInfo();return false;">
-                                <input class="btn" onclick="history.go(-1)" value="返回" type="button">
-                            </td>
-                        </tr>
+						<tr>
+							<th style="width: 100px;">姓名：</th>
+							<td><input class="common-text" id="name" name="name"
+								type="text" maxlength="15"></td>
+						</tr>
+						<tr>
+							<th>工号：</th>
+							<td><input class="common-text" id="number" name="number"
+								type="number" min="1" max="999999" readonly="true">
+								<button class="btn btn-primary  mr10"
+									onclick="doGenerate();return false;">生成</button></td>
+						</tr>
+						<tr>
+							<th>年龄：</th>
+							<td><input class="common-text" id="age" name="age"
+								type="number" min="1" max="100"></td>
+						</tr>
+						<tr>
+							<th>性别：</th>
+							<td><input type="radio" name="gender" value="0"> 男 <input
+								type="radio" name="gender" value="1"> 女</td>
+						</tr>
+						<tr>
+							<th>状态：</th>
+							<td><select name="status">
+									<option value="0">在职</option>
+									<option value="1">离职</option>
+									<option value="2">退休</option>
+							</select></td>
+						</tr>
+						<tr>
+							<th>学历：</th>
+							<td><select name="degree">
+									<option value="专科">专科</option>
+									<option value="本科">本科</option>
+									<option value="硕士">硕士</option>
+							</select></td>
+						</tr>
+						<tr>
+							<th>籍贯：</th>
+							<td><select name="hometown">
+									<option value="北京">北京</option>
+									<option value="上海">上海</option>
+									<option value="广州">广州</option>
+							</select></td>
+						</tr>
+						<tr>
+							<th>职位：</th>
+							<td><input class="common-text" id="position" name="position"
+								type="text"></td>
+						</tr>
+						<tr>
+							<th>部门：</th>
+							<td><select name="department"> {volist
+									name='deptlist' id='vo'}
+									<option value="{$vo.id}">{$vo.name}</option> {/volist}
+							</select></td>
+
+						</tr>
+						<tr>
+							<th></th>
+							<td><input class="btn btn-primary  mr10" value="保存后自动关闭"
+								name="dosubmit" type="submit"
+								onclick="checkInfo();return false;"> <input
+								class="btn btn-primary  mr10" value="保存并继续增加"
+								name="dosubmit_continue" type="submit"
+								onclick="checkInfo();return false;"> <input class="btn"
+								onclick="history.go(-1)" value="返回" type="button"></td>
+						</tr>
 					</tbody>
 				</table>
 
 			</form>
-	
+
 		</div>
-		
+
 	</div>
 </div>
 </body>
 </html>
 <script type="text/javascript">
-    function checkInfo(){
-        var name = document.getElementById('name').value;
-        // alert(name);
-        if (name=="") {
-            alert("请输入姓名");
-            return;
-        }
-        var number = document.getElementById('number').value;
-        if (number=="") {
-            alert("请输入工号");
-            return;
-        }
-        var age = document.getElementById('age').value;
-        if (age==""){
-            alert("请输入年龄");
-            return;
-        }
-        document.form.submit()
-    }
+	/**
+	生成6位员工号
+	*/
+	function doGenerate(){
+		var number = MathRand();
+		document.getElementById('number').value = number;
+
+	}
+	
+	/**
+	 * 隨機生成6數字
+	 */
+	function MathRand() {
+		var Num = "";
+		for (var i = 0; i < 6; i++) {
+			Num += Math.floor(Math.random() * 10);
+		}
+		return Num;
+	}
+	
+	/**
+	验证页面必输项
+	*/
+	function checkInfo() {
+		var name = document.getElementById('name').value;
+		// alert(name);
+		if (name == "") {
+			alert("请输入姓名");
+			return;
+		}
+		var number = document.getElementById('number').value;
+		if (number == "") {
+			alert("请输入工号");
+			return;
+		}
+		var age = document.getElementById('age').value;
+		if (age == "") {
+			alert("请输入年龄");
+			return;
+		}
+		document.form.submit()
+	}
 </script>
 
 
