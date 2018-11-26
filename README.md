@@ -39,3 +39,9 @@ C:/Program Files/Java/jdk1.8.0_172/jre/bin/server/jvm.dll
 
 java JVM:
 -Xms256m -Xmx1024m
+
+eclipse setting:
+
+abcedfghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890.
+
+
